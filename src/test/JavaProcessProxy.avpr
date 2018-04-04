@@ -1,0 +1,26 @@
+{"namespace": "com.cgs.mpagent.proto",
+ "protocol": "JavaProcessProxy",
+
+ "types": [
+     {"name": "JavaProcess", "type": "record",
+      "fields": [
+          {"name": "pid",   "type": "int"},
+          {"name": "name", "type": "string"},
+          {"name": "heapMemoryUsed", "type": "long"},
+          {"name": "heapMemoryMax", "type": "long"},
+          {"name": "nonheapMemoryUsed", "type": "long"},
+          {"name": "nonheapMemoryMax", "type": "long"},
+          {"name": "threadCount", "type": "int"},
+          {"name": "daemonThreadCount", "type": "int"},
+          {"name": "peakThreadCount", "type": "int"}
+      ]
+     }
+ ],
+
+ "messages": {
+      "getState": {
+     	 "request": [{"name": "startup", "type": "string"}],
+         "response": "JavaProcess"
+     }
+ }
+}

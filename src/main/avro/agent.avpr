@@ -1,0 +1,85 @@
+{"namespace": "com.cgs.mpagent.proto",
+ "protocol": "Agent",
+
+ "types": [
+     {"name": "Disk", "type": "record",
+      "fields": [
+          {"name": "name",   "type": "string"},
+          {"name": "total", "type": "double"},
+          {"name": "used", "type": "double"},
+          {"name": "Mounted", "type": "string"}
+      ]
+     },
+     {"name": "Process", "type": "record",
+      "fields": [
+          {"name": "pid",   "type": "int"},
+          {"name": "memory", "type": "int"},
+          {"name": "command", "type": "string"}
+      ]
+     },
+     {"name": "JavaProcess", "type": "record",
+      "fields": [
+          {"name": "pid",   "type": "int"},
+          {"name": "name", "type": "string"},
+          {"name": "heapMemoryUsed", "type": "long"},
+          {"name": "heapMemoryMax", "type": "long"},
+          {"name": "nonheapMemoryUsed", "type": "long"},
+          {"name": "nonheapMemoryMax", "type": "long"},
+          {"name": "threadCount", "type": "int"},
+          {"name": "daemonThreadCount", "type": "int"},
+          {"name": "peakThreadCount", "type": "int"}
+      ]
+     }
+ ],
+
+ "messages": {
+     "getSystemName": {
+     		"request": [],
+         "response": "string"
+     },
+     "getCpuPct": {
+         "request": [],
+         "response": "int"
+     },
+     "getMemoryPct": {
+         "request": [],
+         "response": "int"
+     },
+     "getSwapPct": {
+         "request": [],
+         "response": "int"
+     },
+     "getDiskIO": {
+         "request": [],
+         "response": "long"
+     },
+     "getNetIO": {
+         "request": [],
+         "response": "long"
+     },
+     "getFreeMemory": {
+         "request": [],
+         "response": "long"
+     },
+     "getDisks": {
+     		"request": [],
+         "response": {"type": "array", "items": "Disk"}
+     },
+     "getPrcState": {
+     		"request": [{"name": "startup", "type": "string"}],
+         "response": "Process"
+     },
+     "getJavaState": {
+     	 "request": [{"name": "startup", "type": "string"}],
+         "response": "JavaProcess"
+     },
+     "startService": {
+     		"request": [{"name": "name", "type": "string"}],
+         "response": "boolean"
+     },
+     "stopService": {
+     		"request": [{"name": "name", "type": "string"}],
+         "response": "boolean"
+     }
+ }
+}
